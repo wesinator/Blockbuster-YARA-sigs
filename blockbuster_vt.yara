@@ -1197,7 +1197,7 @@ rule RomeoFoxtrot
     */
 
     $connect = {
-        C7 [3] 01 00 00 00 8B [6] C7 [3] 00 00 20 03 5? 89 [3] ( FF 15 | E8 ) [4] 6A 06 6A 01 6A 02 66 [4] 66 [4] 02 00 ( FF 15 | E8 ) [4] 83 F8 FF 89 [2] 0F 84 [4] [0-7] 8D [3] 6A 04 5? 68 02 10 00 00 68 FF FF 00 00 5? ( FF D? | E8 [3] ??) 8B [2] 8D [3] 6A 04 5? 68 01 10 00 00 68 FF FF 00 00 5? ( FF D? | E8 [3] ??)
+        C7 [3] 01 00 00 00 8B [6] C7 [3] 00 00 20 03 5? 89 [3] (FF 15 | E8) [4] 6A 06 6A 01 6A 02 66 [4] 66 [4] 02 00 (FF 15 | E8) [4] 83 F8 FF 89 [2] 0F 84 [4] [0-7] 8D [3] 6A 04 5? 68 02 10 00 00 68 FF FF 00 00 5? (FF D? | E8) [0-4] 8B [2] 8D [3] 6A 04 5? 68 01 10 00 00 68 FF FF 00 00 5? (FF D? | E8 )
     }
     $challenge = "POST HTTP REQUEST?"
     $response = "RESPONSE 200 OK!!!"
@@ -2025,28 +2025,28 @@ rule WhiskeyBravo
     */
 
     $a = {
-    68 [4]
-    5?
-    (FF D? | E8) // (FF D? | E8 [4]) removed - https://github.com/VirusTotal/yara/issues/911
-    83 C4 (08 | 0C)
-    85 C0
-    0F 84 [4]
+        68 [4]
+        5?
+        (FF D? | E8) [0-4] // (FF D? | E8 [4]) removed - https://github.com/VirusTotal/yara/issues/911
+        83 C4 (08 | 0C)
+        85 C0
+        0F 84 [4]
 
-    [0-2]
-    68 [4]
-    5?
-    (FF D? | E8) // (FF D? | E8 [4]) removed - https://github.com/VirusTotal/yara/issues/911
-    83 C4 (08 | 0C)
-    85 C0
-    0F 84 [4]
+        [0-2]
+        68 [4]
+        5?
+        (FF D? | E8) [0-4] // (FF D? | E8 [4]) removed - https://github.com/VirusTotal/yara/issues/911
+        83 C4 (08 | 0C)
+        85 C0
+        0F 84 [4]
 
-    [0-2]
-    68 [4]
-    5?
-    (FF D? | E8) // (FF D? | E8 [4]) removed - https://github.com/VirusTotal/yara/issues/911
-    83 C4 (08 | 0C)
-    85 C0
-    0F 84
+        [0-2]
+        68 [4]
+        5?
+        (FF D? | E8) [0-4] // (FF D? | E8 [4]) removed - https://github.com/VirusTotal/yara/issues/911
+        83 C4 (08 | 0C)
+        85 C0
+        0F 84
     }
 
     $ext1 = ".wpd" wide nocase
