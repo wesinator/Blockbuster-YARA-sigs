@@ -26,20 +26,20 @@ rule RomeoGolf
 	*/
 
 	$idGen = {
-			FF 15 [4]
-			50 
-			E8 [4] 
-			83 C4 04 
-			E8 [4]
-			C1 ?? 10 
-			89 [2]
-			E8 [4] 
-			01 [2]
-			E8 [4] 
-			C1 ?? 10 
-			89 [2] 
-			E8 [4] 
-		}
+    	FF 15 [4]
+    	50
+    	E8 [4]
+    	83 C4 04
+    	E8 [4]
+    	C1 ?? 10
+    	89 [2]
+    	E8 [4]
+    	01 [2]
+    	E8 [4]
+    	C1 ?? 10
+    	89 [2]
+    	E8
+    }
 
 	condition:
 		$idGen in ((pe.sections[pe.section_index(".text")].raw_data_offset)..(pe.sections[pe.section_index(".text")].raw_data_offset + pe.sections[pe.section_index(".text")].raw_data_size))

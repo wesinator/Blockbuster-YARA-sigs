@@ -18,7 +18,7 @@ rule DeltaCharlie
 
     condition:
     any of them
-    
+
 }
 
 rule HotelAlfa
@@ -1159,7 +1159,7 @@ rule RomeoFoxtrot
     */
 
     $connect = {
-    C7 [3] 01 00 00 00 8B [6] C7 [3] 00 00 20 03 5? 89 [3] (FF 15 [4] | E8 [4]) 6A 06 6A 01 6A 02 66 [4] 66 [4] 02 00 (FF 15 [4] | E8 [4]) 83 F8 FF 89 [2] 0F 84 [4] [0-7] 8D [3] 6A 04 5? 68 02 10 00 00 68 FF FF 00 00 5? (FF D? | E8 [4]) 8B [2] 8D [3] 6A 04 5? 68 01 10 00 00 68 FF FF 00 00 5? (FF D? | E8 [4])
+        C7 [3] 01 00 00 00 8B [6] C7 [3] 00 00 20 03 5? 89 [3] (FF 15 | E8) [4] 6A 06 6A 01 6A 02 66 [4] 66 [4] 02 00 (FF 15 | E8) [4] 83 F8 FF 89 [2] 0F 84 [4] [0-7] 8D [3] 6A 04 5? 68 02 10 00 00 68 FF FF 00 00 5? (FF D? | E8) [0-4] 8B [2] 8D [3] 6A 04 5? 68 01 10 00 00 68 FF FF 00 00 5? (FF D? | E8 )
     }
     $challenge = "POST HTTP REQUEST?"
     $response = "RESPONSE 200 OK!!!"
@@ -1196,19 +1196,19 @@ rule RomeoGolf
     */
 
     $idGen = {
-    FF 15 [4]
-    50
-    E8 [4]
-    83 C4 04
-    E8 [4]
-    C1 ?? 10
-    89 [2]
-    E8 [4]
-    01 [2]
-    E8 [4]
-    C1 ?? 10
-    89 [2]
-    E8
+        FF 15 [4]
+        50
+        E8 [4]
+        83 C4 04
+        E8 [4]
+        C1 ?? 10
+        89 [2]
+        E8 [4]
+        01 [2]
+        E8 [4]
+        C1 ?? 10
+        89 [2]
+        E8
     }
 
     condition:
@@ -1958,28 +1958,28 @@ rule WhiskeyBravo
     */
 
     $a = {
-    68 [4]
-    5?
-    (FF D? | E8) // (FF D? | E8 [4]) removed - https://github.com/VirusTotal/yara/issues/911
-    83 C4 (08 | 0C)
-    85 C0
-    0F 84 [4]
+        68 [4]
+        5?
+        (FF D? | E8) [0-4] // (FF D? | E8 [4]) removed - https://github.com/VirusTotal/yara/issues/911
+        83 C4 (08 | 0C)
+        85 C0
+        0F 84 [4]
 
-    [0-2]
-    68 [4]
-    5?
-    (FF D? | E8) // (FF D? | E8 [4]) removed - https://github.com/VirusTotal/yara/issues/911
-    83 C4 (08 | 0C)
-    85 C0
-    0F 84 [4]
+        [0-2]
+        68 [4]
+        5?
+        (FF D? | E8) [0-4] // (FF D? | E8 [4]) removed - https://github.com/VirusTotal/yara/issues/911
+        83 C4 (08 | 0C)
+        85 C0
+        0F 84 [4]
 
-    [0-2]
-    68 [4]
-    5?
-    (FF D? | E8) // (FF D? | E8 [4]) removed - https://github.com/VirusTotal/yara/issues/911
-    83 C4 (08 | 0C)
-    85 C0
-    0F 84
+        [0-2]
+        68 [4]
+        5?
+        (FF D? | E8) [0-4] // (FF D? | E8 [4]) removed - https://github.com/VirusTotal/yara/issues/911
+        83 C4 (08 | 0C)
+        85 C0
+        0F 84
     }
 
     $ext1 = ".wpd" wide nocase
@@ -2154,7 +2154,7 @@ rule SMB_Worm_Tool
       uint32(0) == 0x46445025 or
       uint32(1) == 0x6674725C)
     and all of them
-    
+
 }
 
 
@@ -2167,7 +2167,7 @@ rule Lightweight_Backdoor1
 
     condition:
     (uint16(0) == 0x5A4D) and all of them
-    
+
 }
 
 
@@ -2178,7 +2178,7 @@ rule LightweightBackdoor2
 
     condition:
     (uint16(0) == 0x5A4D or uint16(0) == 0xCFD0 or uint16(0) == 0xC3D4 or uint32(0) == 0x46445025 or uint32(1) == 0x6674725C) and all of them
-    
+
 }
 
 
@@ -2190,7 +2190,7 @@ rule LightweightBackdoor3
 
     condition:
     (uint16(0) == 0x5A4D or uint16(0) == 0xCFD0 or uint16(0) == 0xC3D4 or uint32(0) == 0x46445025 or uint32(1) == 0x6674725C) and all of them
-    
+
 }
 
 
@@ -2201,7 +2201,7 @@ rule LightweightBackdoor4
 
     condition:
     (uint16(0) == 0x5A4D or uint16(0) == 0xCFD0 or uint16(0) == 0xC3D4 or uint32(0) == 0x46445025 or uint32(1) == 0x6674725C) and all of them
-    
+
 }
 
 
@@ -2212,7 +2212,7 @@ rule LightweightBackdoor5
 
     condition:
     (uint16(0) == 0x5A4D or uint16(0) == 0xCFD0 or uint16(0) == 0xC3D4 or uint32(0) == 0x46445025 or uint32(1) == 0x6674725C) and all of them
-    
+
 }
 
 
@@ -2224,7 +2224,7 @@ rule LightweightBackdoor6
 
     condition:
     (uint16(0) == 0x5A4D or uint16(0) == 0xCFD0 or uint16(0) == 0xC3D4 or uint32(0) == 0x46445025 or uint32(1) == 0x6674725C) and all of them
-    
+
 }
 
 
@@ -2236,7 +2236,7 @@ rule ProxyTool1
 
     condition:
     (uint16(0) == 0x5A4D or uint16(0) == 0xCFD0 or uint16(0) == 0xC3D4 or uint32(0) == 0x46445025 or uint32(1) == 0x6674725C) and any of them
-    
+
 }
 
 
@@ -2247,7 +2247,7 @@ strings:
 
 condition:
     (uint16(0) == 0x5A4D or uint16(0) == 0xCFD0 or uint16(0) == 0xC3D4 or uint32(0) == 0x46445025 or uint32(1) == 0x6674725C) and all of them
-    
+
 }
 
 
@@ -2258,7 +2258,7 @@ rule ProxyTool3
 
     condition:
     (uint16(0) == 0x5A4D or uint16(0) == 0xCFD0 or uint16(0) == 0xC3D4 or uint32(0) == 0x46445025 or uint32(1) == 0x6674725C) and $STR2
-    
+
 }
 
 
@@ -2271,7 +2271,7 @@ rule DestructiveHardDriveTool1
 
     condition:
     $str0 at 0 and $xorInLoop and #str1 > 300
-    
+
 }
 
 /*
@@ -2307,7 +2307,7 @@ rule DestructiveTargetCleaningTool2
 
     condition:
     $secureWipe
-    
+
 }
 
 
@@ -2321,7 +2321,7 @@ rule DestructiveTargetCleaningTool3
 
     condition:
     all of them
-    
+
 }
 
 
@@ -2337,7 +2337,7 @@ rule DestructiveTargetCleaningTool4
 
     condition:
     (#BATCH_SCRIPT_LN1_1 == 2) and all of them
-    
+
 }
 
 
@@ -2348,7 +2348,7 @@ rule DestructiveTargetCleaningTool5
 
     condition:
     $MCU_DLL_ZLIB_COMPRESSED2
-    
+
 }
 
 
@@ -2360,7 +2360,7 @@ rule DestructiveTargetCleaningTool6
 
     condition:
     ($MCU_INF_StartHexEnc or $MCU_INF_StartHexDec)
-    
+
 }
 
 
@@ -2373,7 +2373,7 @@ rule DestructiveTargetCleaningTool7
 
     condition:
     (uint16(0) == 0x5A4D and uint16(uint32(0x3c)) == 0x4550) and all of them
-    
+
 }
 
 
@@ -2385,7 +2385,7 @@ rule DestructiveTargetCleaningTool8
 
     condition:
     (uint16(0) == 0x5A4D and uint16(uint32(0x3c)) == 0x4550) and $license and not $PuTTY
-    
+
 }
 
 rule Malwareusedbycyberthreatactor1
@@ -2411,7 +2411,7 @@ rule Malwareusedbycyberthreatactor1
   	// vvv---- this sig hits on a legit CRT function it seems.
     $getMajorMinorLinker = {568B7424086A00832600FF15???????06681384D5A75148B483C85C9740D03C18A481A880E8A401B8846015EC3}
     */
-    
+
     $openServiceManager = {FF15???0?0?08B?885??74????????????????5?FF15???0?0?08B?????0?0?08BF?85F?74}
 
     condition:
@@ -2433,7 +2433,7 @@ rule Malwareusedbycyberthreatactor2
 
     condition:
     (uint16(0) == 0x5A4D or uint16(0) == 0xCFD0  or uint16(0) == 0xC3D4 or uint32(0) == 0x46445025 or uint32(1) == 0x6674725C) and all of them
-    
+
 }
 
 
@@ -2444,7 +2444,7 @@ rule Malwareusedbycyberthreatactor3
 
     condition:
     (uint16(0) == 0x5A4D or uint16(0) == 0xCFD0 or uint16(0) == 0xC3D4 or uint32(0) == 0x46445025 or uint32(1) == 0x6674725C) and all of them
-    
+
 }
 // yara rules that can cross boundaries between the various sets/types... more general detection signatures
 
@@ -2466,7 +2466,7 @@ rule wiper_unique_strings
 
     condition:
     ($a or $b or $c or $d or $e or $f)
-    
+
 }
 
 
@@ -2484,7 +2484,7 @@ rule wiper_encoded_strings
 
     condition:
     ($scr or $explorer or $kernel32)
-    
+
 }
 
 
@@ -2499,7 +2499,7 @@ rule createP2P
 
     condition:
     any of them
-    
+
 }
 
 rule firewallOpener
@@ -2513,7 +2513,7 @@ rule firewallOpener
 
     condition:
     any of them
-    
+
 }
 
 
